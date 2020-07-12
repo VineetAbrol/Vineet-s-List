@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            table {
+              font-family: arial, sans-serif;
+              border-collapse: collapse;
+              width: 100%;
+            }
+            
+            td, th {
+              border: 1px solid #dddddd;
+              text-align: left;
+              padding: 8px;
+            }
+            
+            tr:nth-child(even) {
+              background-color: #dddddd;
+            }
+            </style>
+        <script src="popup.js"></script>
+    </head>
+    <body>
+        <form id="additem">
+            <p><label for="title">Title</label><br />
+            <input type="text" id="title" name="Name" size="50" value="" /></p>
+            <p><label for="url">Url</label><br />
+            <input type="text" id="url" name="Url" size="50" value="" /></p>
+            <p><label for="url">Price</label><br />
+                <input type="text" id="price" name="Price" size="50" value="" /></p>
+                <img src="" width="300" height="300" id="image">
+                <br>
+                <input id="addbtn" type="button" value="Add to wishlist   " />
+                <span id="status-display"></span>
+            </p>
+            <table id="list">
+                <tr>
+                  <th>Name</th>
+                  <th>URL</th>
+                  <th>Price</th>
+                </tr>
+                <tr>
+                  <td>SiriusXM Universal Boombox - Refurbished</td>
+                  <td>https://www.thesource.ca/en-ca/clearance/clearance/siriusxm-universal-boombox---refurbished/p/108088577</td>
+                  <td>$139.99</td>
+                </tr>
+              </table>
+              
+        </form>
+    </body>
+</html>
+
