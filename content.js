@@ -1,4 +1,6 @@
-var bose = document.querySelector("body > main > div.parent.bose-productPage > div.ecommerceArea2 > div > div > form > div.bose-ecommerceArea2__ctaArea.js-ecommerceArea2-ctaArea.grid-6.grid-medium-6.grid-small-12 > div.bose-price.bose-price--withPromo > div:nth-child(2)")
+//temporary hardcoded values for prices on websites
+
+var bose = document.querySelector("body > main > div.parent.bose-productPage > div.ecommerceArea2 > div > div > form > div.bose-ecommerceArea2__ctaArea.js-ecommerceArea2-ctaArea.grid-6.grid-medium-6.grid-small-12 > div.bose-price > div:nth-child(2)")
 var bestbuy = document.querySelector("#root > div > div > div.x-page-content.container_3Sp8P > div.x-product-detail-page > div.row_1Rbqw > div.col-xs-12_1GBy8.col-sm-6_9CRts.col-md-4_2WnBH.collapseColContainer_ueBNu > div.pricingContainer_25k3c > div.productPricingContainer_3gTS3 > span > span")
 var bodyshop = document.querySelector("body > div.container.main > div > div.container.main > div:nth-child(1) > main > div.wrapper-product-details > section > div > div.columns.five.product-info > form > div.wrapper-qty-price > div.product-price > span:nth-child(1) > strong")
 var buybuybaby = document.querySelector("#first > div:nth-child(4) > div > div.ProductDetailsLayout-inline_6DZQ2P > div.ProductDetailsLayout-inline_5T3BMO > div:nth-child(5) > div > span.PDPPrice-inline_2DaTZO")
@@ -11,9 +13,11 @@ var nike = document.querySelector("#PDP > div > div:nth-child(3) > div:nth-child
 var walmart = document.querySelector("body > div.js-content > div > div:nth-child(4) > div > div > div.css-0.eewy8oa0 > div.css-12rl50h.eewy8oa2 > div.css-18f77yw.eewy8oa4 > div > div.css-w3hdpp.e1cd9jig0 > div > div.css-5ki3bg.e1yn5b3f5 > div > div > div.css-k008qs.e1ufqjyx0 > span > span")
 var thesource = document.querySelector("#content > section > section > div.productDescription > div.pdp-details-wrap.mobile-container > div > div.pdp-sale-price.common-price")
 
+//places hard coded values in array for easy access/ and easy additions
 var brandprices = [bestbuy,document.querySelector("#priceblock_ourprice"),bose,bodyshop,buybuybaby,columbia,garage,fossil,thebay,chapters,nike,walmart,thesource]
-var webimages = [1,6,3,3,1,2,21,38,6,2,3,34];
+var webimages = [2,6,3,3,1,2,21,38,6,2,3,34];
 
+//how we access the values associated with brands
 var brands = {
     "bestbuy": 0,
     "amazon": 1,
@@ -30,6 +34,7 @@ var brands = {
     "thesource": 12,
     };
 
+ //calculate price of items   
 function price(){
     var webbrand = window.location.hostname.split(".")[1].trim();
     console.log(webbrand)
@@ -42,9 +47,9 @@ function price(){
         }
 
 
-    }else if (webbrand == 'columbia' || webbrand == 'nike' || brandprices[brands[webbrand]] == null ||brandprices[brands[webbrand]].innerHTML.trim().length > 20){
+    }else if (webbrand == 'columbia' || brandprices[brands[webbrand]] == null ||brandprices[brands[webbrand]].innerHTML.trim().length > 20){
         var finalprice = 'NULL'
-    
+
     }else if (webbrand == 'thesource'){
         part1 = brandprices[brands[webbrand]].innerHTML.trim().replace('<','>').split('>')[0]
         part2 = brandprices[brands[webbrand]].innerHTML.trim().replace('<','>').split('>')[2].substring(0,3)
@@ -59,6 +64,7 @@ function price(){
 
 }
 
+//obtain image of item
 function image(){
     var webbrand = window.location.hostname.split(".")[1].trim();
     var images = document.getElementsByTagName('img'); 
@@ -86,7 +92,7 @@ function image(){
     return productImage
 }
 
-
+//bundle all information from website and sends it to popup extention 
 chrome.runtime.sendMessage({
     'title': document.title,
     'url': window.location.href,

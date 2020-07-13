@@ -1,3 +1,4 @@
+
 function onPageDetailsReceived(pageDetails)  { 
     document.getElementById('title').value = pageDetails.title; 
     document.getElementById('url').value = pageDetails.url; 
@@ -11,6 +12,7 @@ function onPageDetailsReceived(pageDetails)  {
     }
 } 
 
+//adds product details to table
 function addItem(){
     var table = document.getElementById('list');
     var row = table.insertRow(1);
